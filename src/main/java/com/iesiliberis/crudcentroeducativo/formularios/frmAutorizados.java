@@ -101,7 +101,7 @@ public class frmAutorizados extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         cbParentesco = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jtAutorizados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -302,16 +302,18 @@ public class frmAutorizados extends javax.swing.JFrame {
     }//GEN-LAST:event_jtAutorizadosMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        alumnoDaoImp alu=alumnoDaoImp.getInstance();
+        int id=Integer.parseInt(String.valueOf(jtAutorizados.getValueAt(jtAutorizados.getSelectedRow(), 0)));
         autorizadoDaoImp auto=autorizadoDaoImp.getInstance();
         autorizado aut=null;
             if (cbParentesco.getSelectedItem().equals("TUTOR1")){
-            aut= new autorizado(txtdni.getText(),txtnombre.getText(),txtapellido1.getText(),txtapellido2.getText(),parentesco.TUTOR1);
+            aut= new autorizado(id,txtdni.getText(),txtnombre.getText(),txtapellido1.getText(),txtapellido2.getText(),parentesco.TUTOR1);
         }
         if (cbParentesco.getSelectedItem().equals("TUTOR2")){
-           aut= new autorizado(txtdni.getText(),txtnombre.getText(),txtapellido1.getText(),txtapellido2.getText(),parentesco.TUTOR2);
+           aut= new autorizado(id,txtdni.getText(),txtnombre.getText(),txtapellido1.getText(),txtapellido2.getText(),parentesco.TUTOR2);
         }
         if (cbParentesco.getSelectedItem().equals("OTROS")){
-            aut = new autorizado(txtdni.getText(),txtnombre.getText(),txtapellido1.getText(),txtapellido2.getText(),parentesco.OTROS);
+            aut = new autorizado(id,txtdni.getText(),txtnombre.getText(),txtapellido1.getText(),txtapellido2.getText(),parentesco.OTROS);
         }
         
         try {
