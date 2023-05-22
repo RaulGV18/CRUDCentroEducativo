@@ -6,6 +6,7 @@ package com.iesiliberis.crudcentroeducativo.formularios;
 
 import com.iesiliberis.crudcentroeducativo.ControladorDAO.alumnoDaoImp;
 import com.iesiliberis.crudcentroeducativo.ControladorDAO.autorizadoDaoImp;
+import com.iesiliberis.crudcentroeducativo.ControladorDAO.personalDaoImp;
 import com.iesiliberis.crudcentroeducativo.entidades.autorizado;
 import com.iesiliberis.crudcentroeducativo.entidades.parentesco;
 import java.sql.SQLException;
@@ -145,6 +146,11 @@ public class frmAutorizados extends javax.swing.JFrame {
         });
 
         jButton3.setText("Borrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TUTOR1", "TUTOR2", "OTRO" }));
 
@@ -152,7 +158,7 @@ public class frmAutorizados extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +188,7 @@ public class frmAutorizados extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addGap(80, 80, 80))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,17 +302,8 @@ public class frmAutorizados extends javax.swing.JFrame {
     }//GEN-LAST:event_jtAutorizadosMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         autorizadoDaoImp auto=autorizadoDaoImp.getInstance();
+        autorizadoDaoImp auto=autorizadoDaoImp.getInstance();
         autorizado aut=null;
-        if (cbParentesco.getSelectedItem().equals("TUTOR1") && tut1 ||cbParentesco.getSelectedItem().equals("TUTOR2") && tut2){
-            JOptionPane.showMessageDialog(this,"EL TUTOR INTRODUCIDO YA EXISTE");
-            try {
-                cargatabla();
-            } catch (SQLException ex) {
-                Logger.getLogger(frmAutorizados.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else{
             if (cbParentesco.getSelectedItem().equals("TUTOR1")){
             aut= new autorizado(txtdni.getText(),txtnombre.getText(),txtapellido1.getText(),txtapellido2.getText(),parentesco.TUTOR1);
         }
@@ -322,7 +319,7 @@ public class frmAutorizados extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"Introduzca como minimo un DNI");
             }
             else {
-            auto.add(aut);
+            auto.update(aut);
             cargatabla();
             txtdni.setText("");
             txtnombre.setText("");
@@ -333,15 +330,25 @@ public class frmAutorizados extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println("error" + ex.getMessage());
         }
-        autorizado autor=auto.devolvAutorizadodni(aut.getDni());
-        auto.addautorizado(idAlumno, autor.getId());
             try {
                 cargatabla();
             } catch (SQLException ex) {
                 Logger.getLogger(frmAutorizados.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int fila = jtAutorizados.getSelectedRow();
+        String id = String.valueOf(jtAutorizados.getValueAt(fila, 0));
+        autorizadoDaoImp autor=autorizadoDaoImp.getInstance();
+        try {
+            autor.delete(Integer.parseInt(id));
+            cargatabla();
+        } catch (SQLException ex) {
+            System.out.println("Error" + ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
