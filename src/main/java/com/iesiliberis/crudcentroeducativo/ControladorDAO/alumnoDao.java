@@ -20,4 +20,7 @@ public interface alumnoDao {
     int update(alumno C) throws SQLException;
     void delete(int id) throws SQLException;
     List<autorizado> getautorizados(int id);
+    List<alumno> getalumnoscurso(int id);
+    List<alumno> getalumnosnotincurso(int id);
+    
 }

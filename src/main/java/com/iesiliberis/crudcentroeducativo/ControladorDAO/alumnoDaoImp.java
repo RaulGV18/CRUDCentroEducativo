@@ -186,5 +186,43 @@ public class alumnoDaoImp implements alumnoDao {
         }
         return lista;
     }
+
+    @Override
+    public List<alumno> getalumnoscurso(int id) {
+        String sql = "Select al.* from alumno al join matricula mat where al.id=mat.idalumno and mat.idunidad=? and mat.fbaja is null";
+        List <alumno> lista = new ArrayList <alumno>();
+        
+        
+        try (Connection cn = MyDataSource.getconnection();){
+            PreparedStatement pstm = cn.prepareStatement(sql); 
+            pstm.setInt(1, id);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()) {
+                lista.add(new alumno(rs.getInt("id"),rs.getString("nombre"), rs.getString("apellido1"), rs.getString("apellido2"),rs.getDate("fNacimiento"),Integer.parseInt(rs.getString("Telefono")),rs.getString("email"),rs.getString("dni"),rs.getString("direccion"),rs.getString("poblacion"),rs.getString("provincia"),rs.getString("cp")));
+            }
+        } catch(Exception e){
+            System.out.println("Error..." + e.getMessage());
+        }
+        return lista;
+    }
+
+    @Override
+    public List<alumno> getalumnosnotincurso(int id) {
+        String sql = "SELECT alumno.* FROM alumno LEFT JOIN matricula ON alumno.id = matricula.idalumno WHERE matricula.idunidad IS NULL OR matricula.idunidad <> ? and matricula.fBaja is null";
+        List <alumno> lista = new ArrayList <alumno>();
+        
+        
+        try (Connection cn = MyDataSource.getconnection();){
+            PreparedStatement pstm = cn.prepareStatement(sql); 
+            pstm.setInt(1, id);
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()) {
+                lista.add(new alumno(rs.getInt("id"),rs.getString("nombre"), rs.getString("apellido1"), rs.getString("apellido2"),rs.getDate("fNacimiento"),Integer.parseInt(rs.getString("Telefono")),rs.getString("email"),rs.getString("dni"),rs.getString("direccion"),rs.getString("poblacion"),rs.getString("provincia"),rs.getString("cp")));
+            }
+        } catch(Exception e){
+            System.out.println("Error..." + e.getMessage());
+        }
+        return lista;
+    }
     
 }

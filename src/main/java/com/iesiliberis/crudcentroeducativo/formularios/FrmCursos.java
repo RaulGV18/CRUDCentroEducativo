@@ -9,7 +9,6 @@ import com.iesiliberis.crudcentroeducativo.ControladorDAO.CursoDaoImp;
 import com.iesiliberis.crudcentroeducativo.entidades.curso;
 import com.iesiliberis.crudcentroeducativo.entidades.cursoacademico;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

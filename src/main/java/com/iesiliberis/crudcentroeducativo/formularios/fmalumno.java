@@ -6,16 +6,13 @@ package com.iesiliberis.crudcentroeducativo.formularios;
 
 
 import com.iesiliberis.crudcentroeducativo.ControladorDAO.alumnoDaoImp;
-import com.iesiliberis.crudcentroeducativo.ControladorDAO.personalDaoImp;
 import com.iesiliberis.crudcentroeducativo.entidades.alumno;
-import com.iesiliberis.crudcentroeducativo.entidades.personal;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -47,10 +44,6 @@ public class fmalumno extends javax.swing.JFrame {
                 }
         };
         jtalumno.setModel(mode);
-        
-        
-            
-        
     }
     
     private void cargatabla() throws SQLException{
@@ -287,15 +280,6 @@ public class fmalumno extends javax.swing.JFrame {
         txttel.setText(String.valueOf(jtalumno.getValueAt(fila, 6)));
         txtemail.setText(String.valueOf(jtalumno.getValueAt(fila, 7)));
         
-        if (evt.getClickCount()==2){
-            JDialog frame=new JDialog(this,"Detalle Alumno",true);
-            jpAlumnoDetalle panel=new jpAlumnoDetalle();
-            int idseleccion=Integer.parseInt(jtalumno.getValueAt(jtalumno.getSelectedRow(), 0).toString());
-            panel.CargaDetalle(idseleccion);
-            frame.getContentPane().add(panel);
-            frame.pack();
-            frame.setVisible(true);
-        }
     }//GEN-LAST:event_jtalumnoMouseClicked
 
     private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed

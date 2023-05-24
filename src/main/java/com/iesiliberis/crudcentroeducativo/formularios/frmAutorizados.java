@@ -6,7 +6,6 @@ package com.iesiliberis.crudcentroeducativo.formularios;
 
 import com.iesiliberis.crudcentroeducativo.ControladorDAO.alumnoDaoImp;
 import com.iesiliberis.crudcentroeducativo.ControladorDAO.autorizadoDaoImp;
-import com.iesiliberis.crudcentroeducativo.ControladorDAO.personalDaoImp;
 import com.iesiliberis.crudcentroeducativo.entidades.autorizado;
 import com.iesiliberis.crudcentroeducativo.entidades.parentesco;
 import java.sql.SQLException;

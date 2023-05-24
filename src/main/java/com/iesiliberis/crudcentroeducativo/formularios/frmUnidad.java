@@ -464,6 +464,17 @@ public class frmUnidad extends javax.swing.JFrame {
         txtObservaciones.setText(String.valueOf(jtUnidades.getValueAt(fila, 3)));
         txtTutor.setText(String.valueOf(jtUnidades.getValueAt(fila, 5)));
         txtaula.setText(String.valueOf(jtUnidades.getValueAt(fila, 6)));
+         if (evt.getClickCount()==2){
+            
+            int idseleccion=Integer.parseInt(jtUnidades.getValueAt(jtUnidades.getSelectedRow(), 0).toString());
+            frmMatriculas mat;
+            try {
+                mat = new frmMatriculas(idseleccion);
+                mat.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(frmUnidad.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jtUnidadesMouseClicked
 
     private void txtbuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyPressed
