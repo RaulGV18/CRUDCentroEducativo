@@ -31,7 +31,6 @@ public class MyDataSource {
         if (cn==null || cn.isClosed()){
             cn=DriverManager.getConnection(url,user,pass);
         }
-        System.out.println("conexion establecida");
         return cn;
     }
 }
