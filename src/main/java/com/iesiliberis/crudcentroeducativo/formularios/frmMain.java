@@ -83,6 +83,9 @@ public class frmMain extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
@@ -122,6 +125,30 @@ public class frmMain extends javax.swing.JFrame {
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Parametrizacion");
+
+        jMenuItem3.setText("CursoAcademico");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem3);
+
+        jMenuItem1.setText("Aulas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem1);
+
+        jMenuItem2.setText("Tutores");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem2);
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -209,6 +236,36 @@ public class frmMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        frmAulas aulas;
+        try {
+            aulas = new frmAulas();
+            aulas.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmUnidad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        frmTutores tutor;
+        try {
+            tutor = new frmTutores();
+            tutor.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmUnidad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        frmCursoAcademico cursoaca;
+        try {
+            cursoaca = new frmCursoAcademico();
+            cursoaca.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmUnidad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,6 +313,9 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem optmAcercade;
     private javax.swing.JDesktopPane pnldEscritorio;

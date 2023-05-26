@@ -126,8 +126,6 @@ public class frmUnidad extends javax.swing.JFrame {
         btnañadir = new javax.swing.JButton();
         btnborrar = new javax.swing.JButton();
         btnactualizar = new javax.swing.JButton();
-        btnAulas = new javax.swing.JButton();
-        btnTutores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -194,20 +192,6 @@ public class frmUnidad extends javax.swing.JFrame {
             }
         });
 
-        btnAulas.setText("Aulas");
-        btnAulas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAulasActionPerformed(evt);
-            }
-        });
-
-        btnTutores.setText("Tutores");
-        btnTutores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTutoresActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlTablaLayout = new javax.swing.GroupLayout(pnlTabla);
         pnlTabla.setLayout(pnlTablaLayout);
         pnlTablaLayout.setHorizontalGroup(
@@ -240,21 +224,17 @@ public class frmUnidad extends javax.swing.JFrame {
                             .addComponent(txtaula, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlTablaLayout.createSequentialGroup()
-                        .addGroup(pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(pnlTablaLayout.createSequentialGroup()
-                                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(btnañadir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnborrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnactualizar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAulas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnTutores)))
-                        .addGap(0, 32, Short.MAX_VALUE))))
+                        .addComponent(jLabel1)
+                        .addGap(0, 515, Short.MAX_VALUE))
+                    .addGroup(pnlTablaLayout.createSequentialGroup()
+                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnañadir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnborrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnactualizar)
+                        .addGap(16, 16, 16))))
         );
         pnlTablaLayout.setVerticalGroup(
             pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,8 +260,6 @@ public class frmUnidad extends javax.swing.JFrame {
                     .addComponent(btnañadir)
                     .addComponent(btnborrar)
                     .addComponent(btnactualizar)
-                    .addComponent(btnAulas)
-                    .addComponent(btnTutores)
                     .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -324,10 +302,8 @@ public class frmUnidad extends javax.swing.JFrame {
         int contaul=0;
         List <personal> person = null;
         List <aula> aulas = null;
-        int fila = jtUnidades.getSelectedRow();
         personalDaoImp tut = personalDaoImp.getInstance();
         aulaDaoImp aul = aulaDaoImp.getInstance();
-        String id=String.valueOf(jtUnidades.getValueAt(fila, 0));
         unidad un= new unidad(idcurso,txtcodigo.getText(),txtnombre.getText(),txtObservaciones.getText(),idcurso);
         try {
             person=tut.getAll();
@@ -491,26 +467,6 @@ public class frmUnidad extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtbuscarKeyPressed
 
-    private void btnAulasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAulasActionPerformed
-        frmAulas aulas;
-        try {
-            aulas = new frmAulas();
-            aulas.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(frmUnidad.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnAulasActionPerformed
-
-    private void btnTutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutoresActionPerformed
-        frmTutores tutor;
-        try {
-            tutor = new frmTutores();
-            tutor.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(frmUnidad.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnTutoresActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -548,8 +504,6 @@ public class frmUnidad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAulas;
-    private javax.swing.JButton btnTutores;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btnañadir;
     private javax.swing.JButton btnborrar;

@@ -266,7 +266,7 @@ public class frmMatriculas extends javax.swing.JFrame {
         matriculaDaoImp matr = matriculaDaoImp.getInstance();
         matricula mat=null;
         if (txtDescripcion.getText().equals("")){
-            mat= new matricula(Integer.parseInt(String.valueOf(jtalumno.getValueAt(fila,0))),idunidad,String.valueOf(jtalumno.getValueAt(fila,3)),Date.valueOf(LocalDate.now()));
+            mat= new matricula(Integer.parseInt(String.valueOf(jtalumno.getValueAt(fila,0))),idunidad,txtDescripcion.getText(),Date.valueOf(LocalDate.now()));
         }
         else{
             mat= new matricula(Integer.parseInt(String.valueOf(jtalumno.getValueAt(fila,0))),idunidad,txtDescripcion.getText(),Date.valueOf(txtfMatricula.getText()));
